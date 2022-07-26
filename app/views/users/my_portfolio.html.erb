@@ -8,18 +8,16 @@
         <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control form-control-lg" %>
       </div>
       <div class="col-sm-3 no-left-padding">
-        <%= button_tag type: :submit, class: "btn btn-success" do %>
-          
-        <% end %>
+          <button class="btn btn-primary" type="submit">Search</button>
       </div>
     </div>
 
 <% end %>
 <% if @stock %>
 <div class="card card-header results-block">
-  <strong> Symbol:</strong><%= @stock.ticker %>
-  <strong> Name:</strong><%= @stock.name %>
-  <strong> Price:</strong><%= @stock.price %>
+  <strong style="color:red"> Symbol:</strong><%= @stock.ticker %>&nbsp; &nbsp;
+  <strong style="color:red"> Name:</strong><%= @stock.name %>&nbsp; &nbsp;
+  <strong style="color:red"> Price:$</strong><%= @stock.price %>&nbsp;
 </div>
 <% end %>
 
