@@ -12,4 +12,7 @@ class User < ApplicationRecord
       return if password.blank? || password =~ /\A(?=.*\d)(?=.*[A-Z])(?=.*\W)[^ ]{8,}\z/ 
       errors.add :password, 'Password should have more than 8 characters including 1 uppercase letter, 1 number, 1 special character'
    end
+
+   has_many :user_stocks
+   has_many :stocks, through: :user_stocks
 end
