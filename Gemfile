@@ -12,6 +12,7 @@ gem "sprockets-rails"
 # Use mysql as the database for Active Record
 gem "mysql2", "~> 0.5"
 gem "devise"
+#gem 'devise_security_extension'
 gem "devise-bootstrap-views", "~>1.0"
 gem 'iex-ruby-client'
 gem "font-awesome-rails"
