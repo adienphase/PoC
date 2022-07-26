@@ -13,6 +13,7 @@
     </div>
 
 <% end %>
+<br>
 <% if @stock %>
 <div class="card card-header results-block">
   <strong style="color:red"> Symbol:</strong><%= @stock.ticker %>&nbsp; &nbsp;
@@ -53,3 +54,5 @@
     </tr>
   </tbody>
 </table>
+<br>
+<%= link_to 'Home' , root_path , :method => :get %>
