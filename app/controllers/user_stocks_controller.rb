@@ -3,6 +3,8 @@ class UserStocksController < ApplicationController
         stock = Stock.new_lookup(params[:ticker])
         stock.save
         @user_stock = UserStock.create(user: current_user, stock: stock)
+        flash[:notice] = "#{stock.ticker} was successfully added to portfolio"
+        redirect_to my_portfolio_path 
     end
     def destroy
         stock = Stock.find(params[:id])
