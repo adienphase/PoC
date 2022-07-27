@@ -18,11 +18,12 @@
 <div class="card card-header results-block">
   <strong style="color:red"> Symbol:</strong><%= @stock.ticker %>&nbsp; &nbsp;
   <strong style="color:red"> Name:</strong><%= @stock.name %>&nbsp; &nbsp;
-  <strong style="color:red"> Price:$</strong><%= @stock.price %>&nbsp;
+  <strong style="color:red"> Price:$</strong><%= @stock.price %>&nbsp; &nbsp;
+  <%= button_to 'Add to portfolio' , user_stocks_path(user: current_user, ticker: @stock.ticker) , :method => :post %>
 </div>
 <% end %>
 
 <h2>My Watchlist</h2>
 <%= render 'stocks/list'%>
 <br>
-<%= link_to 'Home' , root_path , :method => :get %>
+<%= button_to 'Home' , root_path , :method => :get %>
