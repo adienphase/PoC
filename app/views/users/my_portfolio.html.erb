@@ -27,3 +27,4 @@
 <%= render 'stocks/list'%>
 <br>
 <%= button_to 'Home' , root_path , :method => :get %>
+<%= button_to 'Sign out' , destroy_user_session_path , method: :delete  %>
