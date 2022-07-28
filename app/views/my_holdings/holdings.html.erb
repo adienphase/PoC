@@ -1,24 +1,20 @@
 <h1>Welcome to My Portfolio page</h1>
 
-<div class='search-area'>
-  <h3>Search Stocks</h3>
-  <%= form_tag port_search_path, remote: true, method: :get do %>
-    <div class="form-group row">
-      <div class="col-sm-9 no-right-padding">
-        <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control form-control-lg" %>
-      </div>
-      <div class="col-sm-3 no-left-padding">
-          <button class="btn btn-primary" type="submit">Search</button>
-      </div>
-    </div>
-
-<% end %>
-<br>
-<% if @stock %>
-<div class="card card-header results-block">
-  <strong style="color:red"> Symbol:</strong><%= @stock.ticker %>&nbsp; &nbsp;
-  <strong style="color:red"> Name:</strong><%= @stock.name %>&nbsp; &nbsp;
-  <strong style="color:red"> Price:$</strong><%= @stock.price %>&nbsp; &nbsp;
-  <%= button_to 'Add to portfolio' , my_holdings_dispaly_path , method: :get %>
+<h2>My Portfolio</h2>
+<div id="results">
 </div>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Ticker Symbol</th>
+      <th scope="col">Name</th>
+      <th scope="col">Buy price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Current price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+        
+  </tbody>
+</table>
