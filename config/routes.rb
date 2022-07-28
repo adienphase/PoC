@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'port/search'
+  get 'my_holdings/holdings' , to: 'my_holdings#holdings'
+  get 'my_holdings/dispaly'
   #get ':user_stocks', to: 'user_stocks#create'
   resources :user_stocks, only: [:create, :destroy]
  

@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_26_110726) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_28_053532) do
+  create_table "holdings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "ticker"
+    t.string "name"
+    t.integer "quantity"
+    t.decimal "buy_price", precision: 10
+    t.decimal "current_price", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "my_stocks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "ticker"
+    t.string "name"
+    t.integer "quantity"
+    t.decimal "buy_price", precision: 10
+    t.decimal "current_price", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stocks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "ticker"
     t.string "name"

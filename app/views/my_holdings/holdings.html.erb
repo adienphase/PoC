@@ -1,8 +1,8 @@
-<h1>Welcome to My Watchlist page</h1>
+<h1>Welcome to My Portfolio page</h1>
 
 <div class='search-area'>
   <h3>Search Stocks</h3>
-  <%= form_tag search_stock_path, remote: true, method: :get do %>
+  <%= form_tag port_search_path, remote: true, method: :get do %>
     <div class="form-group row">
       <div class="col-sm-9 no-right-padding">
         <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control form-control-lg" %>
@@ -19,12 +19,6 @@
   <strong style="color:red"> Symbol:</strong><%= @stock.ticker %>&nbsp; &nbsp;
   <strong style="color:red"> Name:</strong><%= @stock.name %>&nbsp; &nbsp;
   <strong style="color:red"> Price:$</strong><%= @stock.price %>&nbsp; &nbsp;
-  <%= button_to 'Add to watchlist' , user_stocks_path(user: current_user, ticker: @stock.ticker) , data: { "turbo-method": :post } %>
+  <%= button_to 'Add to portfolio' , my_holdings_dispaly_path , method: :get %>
 </div>
 <% end %>
-
-<h2>My Watchlist</h2>
-<%= render 'stocks/list'%>
-<br>
-<%= button_to 'Home' , root_path , :method => :get %>
-<%= button_to 'Sign out' , destroy_user_session_path , method: :delete  %>
