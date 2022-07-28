@@ -1,4 +1,13 @@
 <h1>Welcome to My Portfolio page</h1>
+<h2>To add stocks to your portfolio, fill the below details:</h2><form action='port_create'>
+  <label for="ticker">Ticker Symbol:</label><br>
+  <input type="text" id="ticker" name="ticker"><br>
+  <label for="quantity">Quantity</label><br>
+  <input type="integer" id="quantity" name="quantity"><br>
+  <label for="buy_price">Buy price</label><br>
+  <input type="decimal" id="buy_price" name="buy_price"><br>
+  <input type="submit" value="Submit">
+</form>
 
 <h2>My Portfolio</h2>
 <div id="results">
@@ -15,6 +24,19 @@
     </tr>
   </thead>
   <tbody>
-        
+  <% invested=0 %>
+        <% MyStock.all.each do |stock| %>
+        <tr>
+            <th scope="row"><%= stock.ticker %></th>
+            <td><%= stock.name %></td>
+            <td><%= stock.buy_price %></td>
+            <td><%= stock.quantity %></td>   <% invested = stock.buy_price * stock.quantity %>
+            <td><%= Stock.new_lookup(stock.ticker).price %></td>
+            <td><%= button_to 'Remove', my_holdings_port_destroy_path(stock), method: :delete %></td>
+        </tr>
+        <% end %>
   </tbody>
 </table>
+<h3>Total Invested amount = <% "#{invested}"%></h3>
+<%= button_to 'Home' , root_path , :method => :get %>
+<%= button_to 'Sign out' , destroy_user_session_path , method: :delete  %>
