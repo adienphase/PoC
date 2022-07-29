@@ -24,19 +24,23 @@
     </tr>
   </thead>
   <tbody>
-  <% invested=0 %>
-        <% MyStock.all.each do |stock| %>
-        <tr>
-            <th scope="row"><%= stock.ticker %></th>
-            <td><%= stock.name %></td>
-            <td><%= stock.buy_price %></td>
-            <td><%= stock.quantity %></td>   <% invested = stock.buy_price * stock.quantity %>
-            <td><%= Stock.new_lookup(stock.ticker).price %></td>
-            <td><%= button_to 'Remove', my_holdings_port_destroy_path(stock), method: :delete %></td>
-        </tr>
-        <% end %>
+  <% invested =0 %>
+   <% current=0 %>
+    <% MyStock.all.each do |stock| %>
+      <tr>
+        <th scope="row"><%= stock.ticker %></th>
+        <td><%= stock.name %></td>
+        <td><%= stock.buy_price %></td>
+        <td><%= stock.quantity %></td>  
+        <% invested = invested + (stock.buy_price.to_i * stock.quantity)%>
+        <% curr_price=Stock.new_lookup(stock.ticker).price %> 
+        <td><%= curr_price %></td> <% current = current + (curr_price.to_i * stock.quantity)%>
+        <td><%= button_to 'Remove', my_holdings_port_destroy_path(stock), method: :delete %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
-<h3>Total Invested amount = <% "#{invested}"%></h3>
+<h3 style="color:Tomato;">Total Invested amount = $<%= invested %></h3>
+<h3 style="color:green;">Current amount = $<%= current %></h3>
 <%= button_to 'Home' , root_path , :method => :get %>
 <%= button_to 'Sign out' , destroy_user_session_path , method: :delete  %>
